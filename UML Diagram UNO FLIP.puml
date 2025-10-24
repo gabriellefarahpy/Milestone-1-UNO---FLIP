@@ -1,0 +1,72 @@
+@startuml
+' Enums for color and type
+enum Color {
+    RED
+    BLUE
+    GREEN
+    YELLOW
+    WILD
+}
+
+enum Type {
+    NUMBER
+    SKIP
+    REVERSE
+    DRAW_TWO
+    WILD
+    WILD_DRAW_FOUR
+}
+
+' Card class with optional otherSide
+class Card {
+    - color: Color
+    - type: Type
+    - number: int
+    - otherSide: Card
+    + Card(color: Color, type: Type, number: int)
+    + setOtherSide(other: Card)
+    + getOtherSide(): Card
+    + matches(other: Card): boolean
+    + toString(): String
+}
+
+' Deck class
+class Deck {
+    - drawPile: List<Card>
+    - discardPile: Stack<Card>
+    + shuffle(): void
+    + draw(): Card
+    + discard(card: Card): void
+    + peekTop(): Card
+}
+
+' Player class
+class Player {
+    - name: String
+    - hand: List<Card>
+    + drawCard(deck: Deck): void
+    + playCard(card: Card, game: Game): boolean
+    + showHand(): void
+}
+
+' Game class
+class Game {
+    - players: List<Player>
+    - currentPlayerIndex: int
+    - isClockwise: boolean
+    - deck: Deck
+    + startGame(): void
+    + nextTurn(): void
+    + playCard(player: Player, card: Card): boolean
+    + drawCard(player: Player): void
+}
+
+' Relationships
+Player "1" --> "*" Card : hand
+Deck "1" --> "*" Card : drawPile
+Deck "1" --> "*" Card : discardPile
+Game "1" --> "*" Player : players
+Game "1" --> Deck : deck
+Card "1" --> "0..1" Card : otherSide
+
+@enduml
