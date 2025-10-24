@@ -21,4 +21,17 @@ public class Game{
         
     }
 
+    public boolean isValidPlay(Card card){
+
+    }
+    public void applyAction(Card card){
+
+    }
+    public void updateScore(Player player, int points){
+
+    }
+    public void displayGameState(){
+        
+    }
+
 }

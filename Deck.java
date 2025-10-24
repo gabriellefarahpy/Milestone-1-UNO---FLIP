@@ -21,4 +21,7 @@ public class Deck{
     public Card peekTop(){
         
     }
+    public void resetIfEmpty(){
+
+    }
 }

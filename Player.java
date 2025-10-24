@@ -3,6 +3,7 @@ import java.util.List;
 public class Player{
     private String name;
     private List<Card>hand;
+    private int score;
 
 
     public void drawCard(Deck:deck){
@@ -15,6 +16,10 @@ public class Player{
 
     public void showHand(){
         
+    }
+
+    public void addScore(int points){
+
     }
 
 }
