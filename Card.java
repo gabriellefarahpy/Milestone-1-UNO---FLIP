@@ -1,3 +1,4 @@
+//Gabrielle Farah
 public class Card{
     private Color color;
     private Type type;
