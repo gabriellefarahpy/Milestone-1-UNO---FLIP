@@ -7,10 +7,29 @@ public class Game{
 
 
     public void startGame(){
+        deck = new Deck();
+        deck.shuffle();
+        for (Players s : players){
+            for (int i = 0, i < 8; i++){
+                s.drawCard(Deck);
+            }
+        }
+        Card firstCard = deck.draw();
+        deck.discared(firstCard);
 
+        currentPlayerIndex = 0;
+        isClockwise = true;
+
+        System.out.println("Starting Card:"+ firstCard);
+        displayGameState();
     }
 
     public void nextTurn(){
+        if (isClockwise == true){
+            currentPlayerIndex++;
+        } else{
+            currentPlayerIndex--;
+        }
 
     }
     public boolean playCard(Player player, Card card){
